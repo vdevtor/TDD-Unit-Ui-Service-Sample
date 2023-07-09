@@ -1,4 +1,4 @@
-package com.vitorthemyth.tddapplication
+package com.vitorthemyth.tddapplication.data.model
 
 data class PlaylistRaw(
     val id : String,

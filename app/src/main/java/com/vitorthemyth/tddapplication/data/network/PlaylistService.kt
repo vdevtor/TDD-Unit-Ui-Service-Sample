@@ -1,6 +1,6 @@
-package com.vitorthemyth.tddapplication.data
+package com.vitorthemyth.tddapplication.data.network
 
-import com.vitorthemyth.tddapplication.PlaylistRaw
+import com.vitorthemyth.tddapplication.data.model.PlaylistRaw
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

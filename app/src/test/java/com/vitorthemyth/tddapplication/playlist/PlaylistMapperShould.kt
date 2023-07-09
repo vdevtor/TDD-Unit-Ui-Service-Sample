@@ -1,7 +1,7 @@
 package com.vitorthemyth.tddapplication.playlist
 
-import com.vitorthemyth.tddapplication.PlaylistMapper
-import com.vitorthemyth.tddapplication.PlaylistRaw
+import com.vitorthemyth.tddapplication.domain.PlaylistMapper
+import com.vitorthemyth.tddapplication.data.model.PlaylistRaw
 import com.vitorthemyth.tddapplication.utils.BaseUnitTest
 import org.junit.Assert.assertEquals
 import org.junit.Test

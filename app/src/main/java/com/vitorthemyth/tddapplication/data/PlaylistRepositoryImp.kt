@@ -1,6 +1,7 @@
 package com.vitorthemyth.tddapplication.data
 
-import com.vitorthemyth.tddapplication.PlaylistMapper
+import com.vitorthemyth.tddapplication.domain.PlaylistMapper
+import com.vitorthemyth.tddapplication.data.network.PlaylistService
 import com.vitorthemyth.tddapplication.domain.PlayListRepository
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import kotlinx.coroutines.flow.Flow

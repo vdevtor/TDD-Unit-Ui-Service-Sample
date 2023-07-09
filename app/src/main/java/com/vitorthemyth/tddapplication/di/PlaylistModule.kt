@@ -1,7 +1,7 @@
 package com.vitorthemyth.tddapplication.di
 
-import com.vitorthemyth.tddapplication.data.PlaylistAPI
-import com.vitorthemyth.tddapplication.data.RetrofitBuilder
+import com.vitorthemyth.tddapplication.data.network.PlaylistAPI
+import com.vitorthemyth.tddapplication.data.network.RetrofitBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

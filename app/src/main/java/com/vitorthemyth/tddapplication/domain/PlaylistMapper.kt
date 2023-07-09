@@ -1,5 +1,7 @@
-package com.vitorthemyth.tddapplication
+package com.vitorthemyth.tddapplication.domain
 
+import com.vitorthemyth.tddapplication.R
+import com.vitorthemyth.tddapplication.data.model.PlaylistRaw
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import javax.inject.Inject
 

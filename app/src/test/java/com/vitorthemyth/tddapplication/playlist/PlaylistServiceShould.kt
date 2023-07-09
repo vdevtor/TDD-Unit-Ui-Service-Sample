@@ -1,9 +1,8 @@
 package com.vitorthemyth.tddapplication.playlist
 
-import com.vitorthemyth.tddapplication.PlaylistRaw
-import com.vitorthemyth.tddapplication.data.PlaylistAPI
-import com.vitorthemyth.tddapplication.data.PlaylistService
-import com.vitorthemyth.tddapplication.domain.models.Playlist
+import com.vitorthemyth.tddapplication.data.model.PlaylistRaw
+import com.vitorthemyth.tddapplication.data.network.PlaylistAPI
+import com.vitorthemyth.tddapplication.data.network.PlaylistService
 import com.vitorthemyth.tddapplication.utils.BaseUnitTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first

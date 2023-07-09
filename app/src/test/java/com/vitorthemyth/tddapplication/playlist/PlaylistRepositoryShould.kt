@@ -1,9 +1,9 @@
 package com.vitorthemyth.tddapplication.playlist
 
-import com.vitorthemyth.tddapplication.PlaylistMapper
-import com.vitorthemyth.tddapplication.PlaylistRaw
+import com.vitorthemyth.tddapplication.domain.PlaylistMapper
+import com.vitorthemyth.tddapplication.data.model.PlaylistRaw
 import com.vitorthemyth.tddapplication.data.PlaylistRepositoryImp
-import com.vitorthemyth.tddapplication.data.PlaylistService
+import com.vitorthemyth.tddapplication.data.network.PlaylistService
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import com.vitorthemyth.tddapplication.utils.BaseUnitTest
 import junit.framework.TestCase.assertEquals
