@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vitorthemyth.tddapplication.PlaylistAPI
 import com.vitorthemyth.tddapplication.PlaylistService
 import com.vitorthemyth.tddapplication.data.PlaylistRepositoryImp
+import com.vitorthemyth.tddapplication.data.RetrofitBuilder
 import com.vitorthemyth.tddapplication.databinding.FragmentPlayListBinding
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import com.vitorthemyth.tddapplication.utils.MyPlayListRecyclerAdapter
@@ -22,13 +23,13 @@ class PlaylistFragment : Fragment() {
 
     private lateinit var binding: FragmentPlayListBinding
 
-    lateinit var viewModel: PlayListViewModel
-    lateinit var viewModelFactory: PlaylistViewModelFactory
-    private val service = PlaylistService(object : PlaylistAPI {
-        override suspend fun fetchPlaylists() {
-            TODO("Not yet implemented")
-        }
-    })
+    private lateinit var viewModel: PlayListViewModel
+    private lateinit var viewModelFactory: PlaylistViewModelFactory
+
+    private val api = RetrofitBuilder.getInstance().create(PlaylistAPI::class.java)
+
+
+    private val service = PlaylistService(api)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

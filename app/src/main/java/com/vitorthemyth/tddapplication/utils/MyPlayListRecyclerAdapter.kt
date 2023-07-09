@@ -1,8 +1,11 @@
 package com.vitorthemyth.tddapplication.utils
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.vitorthemyth.tddapplication.R
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import com.vitorthemyth.tddapplication.databinding.PlaylistItemBinding
 
@@ -34,7 +37,7 @@ class MyPlayListRecyclerAdapter(
         fun bind(item: Playlist) {
             binding.playlistName.text = item.name
             binding.playlistCategory.text = item.category
-            binding.playlistImage.setImageResource(item.image)
+            binding.playlistImage.setImageResource(R.mipmap.playlist)
         }
     }
 }
