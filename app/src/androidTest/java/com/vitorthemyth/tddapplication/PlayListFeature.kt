@@ -80,6 +80,7 @@ class PlayListFeature {
 
     @Test
     fun displayRockImageForRockCategoryItems(){
+        Thread.sleep(4000)
         onView(
             allOf(
                 withId(R.id.playlist_image),
