@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vitorthemyth.tddapplication.PlaylistAPI
 import com.vitorthemyth.tddapplication.PlaylistService
 import com.vitorthemyth.tddapplication.data.PlaylistRepositoryImp
 import com.vitorthemyth.tddapplication.databinding.FragmentPlayListBinding
@@ -23,6 +24,11 @@ class PlaylistFragment : Fragment() {
 
     lateinit var viewModel: PlayListViewModel
     lateinit var viewModelFactory: PlaylistViewModelFactory
+    private val service = PlaylistService(object : PlaylistAPI {
+        override suspend fun fetchPlaylists() {
+            TODO("Not yet implemented")
+        }
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +42,7 @@ class PlaylistFragment : Fragment() {
 
 
     private fun setupViewModel() {
-        viewModelFactory = PlaylistViewModelFactory(PlaylistRepositoryImp(PlaylistService()))
+        viewModelFactory = PlaylistViewModelFactory(PlaylistRepositoryImp(service))
         viewModel = ViewModelProvider(this, viewModelFactory)[PlayListViewModel::class.java]
     }
 
