@@ -46,9 +46,17 @@ class PlaylistFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        viewModel.loader.observe(this as LifecycleOwner) { loading ->
+           when(loading){
+               true -> binding.loader.visibility = View.VISIBLE
+               else ->  binding.loader.visibility = View.GONE
+           }
+        }
+
         viewModel.playlists.observe(this as LifecycleOwner) { playlists ->
             if (playlists.getOrNull() != null) {
-                setupList(view, playlists.getOrDefault(listOf()))
+                setupList(binding.rvPlaylist, playlists.getOrDefault(listOf()))
             }
         }
     }

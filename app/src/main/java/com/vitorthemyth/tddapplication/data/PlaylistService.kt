@@ -1,7 +1,6 @@
 package com.vitorthemyth.tddapplication.data
 
-import com.vitorthemyth.tddapplication.data.PlaylistAPI
-import com.vitorthemyth.tddapplication.domain.models.Playlist
+import com.vitorthemyth.tddapplication.PlaylistRaw
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -11,7 +10,7 @@ class PlaylistService @Inject constructor(
     private val api: PlaylistAPI
 ) {
 
-    suspend fun fetchPlaylists() : Flow<Result<List<Playlist>>> {
+    suspend fun fetchPlaylists() : Flow<Result<List<PlaylistRaw>>> {
         return flow {
             emit(Result.success(api.fetchPlaylists()))
         }.catch {

@@ -37,7 +37,7 @@ class MyPlayListRecyclerAdapter(
         fun bind(item: Playlist) {
             binding.playlistName.text = item.name
             binding.playlistCategory.text = item.category
-            binding.playlistImage.setImageResource(R.mipmap.playlist)
+            binding.playlistImage.setImageResource(item.image)
         }
     }
 }

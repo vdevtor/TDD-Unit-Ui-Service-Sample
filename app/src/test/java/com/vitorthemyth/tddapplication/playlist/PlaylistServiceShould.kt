@@ -1,5 +1,6 @@
 package com.vitorthemyth.tddapplication.playlist
 
+import com.vitorthemyth.tddapplication.PlaylistRaw
 import com.vitorthemyth.tddapplication.data.PlaylistAPI
 import com.vitorthemyth.tddapplication.data.PlaylistService
 import com.vitorthemyth.tddapplication.domain.models.Playlist
@@ -22,7 +23,7 @@ class PlaylistServiceShould : BaseUnitTest() {
 
     private lateinit var service : PlaylistService
     @Mock
-    private var playlists: List<Playlist> = mock(List::class.java) as List<Playlist>
+    private var playlists: List<PlaylistRaw> = mock(List::class.java) as List<PlaylistRaw>
 
     @Mock
     private val api : PlaylistAPI = mock(PlaylistAPI::class.java)
