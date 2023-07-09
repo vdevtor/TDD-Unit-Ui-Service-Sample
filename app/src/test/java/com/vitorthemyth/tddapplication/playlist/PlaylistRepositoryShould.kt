@@ -1,6 +1,6 @@
 package com.vitorthemyth.tddapplication.playlist
 
-import com.vitorthemyth.tddapplication.PlaylistService
+import com.vitorthemyth.tddapplication.data.PlaylistService
 import com.vitorthemyth.tddapplication.data.PlaylistRepositoryImp
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import com.vitorthemyth.tddapplication.utils.BaseUnitTest

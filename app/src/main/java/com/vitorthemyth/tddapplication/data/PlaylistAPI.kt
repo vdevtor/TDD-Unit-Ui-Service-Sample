@@ -1,4 +1,4 @@
-package com.vitorthemyth.tddapplication
+package com.vitorthemyth.tddapplication.data
 
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import retrofit2.http.GET

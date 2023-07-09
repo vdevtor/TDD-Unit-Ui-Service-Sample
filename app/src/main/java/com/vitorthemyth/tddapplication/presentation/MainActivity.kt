@@ -3,7 +3,9 @@ package com.vitorthemyth.tddapplication.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.vitorthemyth.tddapplication.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,5 +16,6 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.container, PlaylistFragment.newInstance())
                 .commit()
         }
+
     }
 }

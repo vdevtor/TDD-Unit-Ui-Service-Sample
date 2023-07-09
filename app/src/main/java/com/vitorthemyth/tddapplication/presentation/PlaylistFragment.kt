@@ -9,27 +9,24 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vitorthemyth.tddapplication.PlaylistAPI
-import com.vitorthemyth.tddapplication.PlaylistService
-import com.vitorthemyth.tddapplication.data.PlaylistRepositoryImp
-import com.vitorthemyth.tddapplication.data.RetrofitBuilder
 import com.vitorthemyth.tddapplication.databinding.FragmentPlayListBinding
 import com.vitorthemyth.tddapplication.domain.models.Playlist
 import com.vitorthemyth.tddapplication.utils.MyPlayListRecyclerAdapter
 import com.vitorthemyth.tddapplication.utils.PlaylistViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class PlaylistFragment : Fragment() {
 
     private lateinit var binding: FragmentPlayListBinding
 
     private lateinit var viewModel: PlayListViewModel
-    private lateinit var viewModelFactory: PlaylistViewModelFactory
 
-    private val api = RetrofitBuilder.getInstance().create(PlaylistAPI::class.java)
+    @Inject
+    lateinit var viewModelFactory: PlaylistViewModelFactory
 
-
-    private val service = PlaylistService(api)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +40,6 @@ class PlaylistFragment : Fragment() {
 
 
     private fun setupViewModel() {
-        viewModelFactory = PlaylistViewModelFactory(PlaylistRepositoryImp(service))
         viewModel = ViewModelProvider(this, viewModelFactory)[PlayListViewModel::class.java]
     }
 
