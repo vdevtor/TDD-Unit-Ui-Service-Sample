@@ -1,16 +1,14 @@
 package com.vitorthemyth.tddapplication.utils
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.vitorthemyth.tddapplication.R
-import com.vitorthemyth.tddapplication.domain.models.Playlist
 import com.vitorthemyth.tddapplication.databinding.PlaylistItemBinding
+import com.vitorthemyth.tddapplication.domain.models.Playlist
 
 class MyPlayListRecyclerAdapter(
-    private val values: List<Playlist>
+    private val values: List<Playlist>,
+    private val lister : (String) -> Unit
 ) : RecyclerView.Adapter<MyPlayListRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -38,6 +36,9 @@ class MyPlayListRecyclerAdapter(
             binding.playlistName.text = item.name
             binding.playlistCategory.text = item.category
             binding.playlistImage.setImageResource(item.image)
+            binding.playListRoot.setOnClickListener {
+                lister(item.id)
+            }
         }
     }
 }

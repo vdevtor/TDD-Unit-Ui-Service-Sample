@@ -7,9 +7,9 @@ import com.vitorthemyth.tddapplication.presentation.PlayListViewModel
 import com.vitorthemyth.tddapplication.utils.BaseUnitTest
 import com.vitorthemyth.tddapplication.utils.captureValues
 import com.vitorthemyth.tddapplication.utils.getValueForTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,6 +20,7 @@ import org.mockito.Mockito.`when` as whenever
 
 
 @RunWith(MockitoJUnitRunner::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 class PlayListViewModelShould : BaseUnitTest() {
 
     @Mock
@@ -32,20 +33,16 @@ class PlayListViewModelShould : BaseUnitTest() {
 
 
     @Test
-    fun `is playlist viewModel retrieved from repository`() = runBlocking {
+    fun `is playlist viewModel retrieved from repository`() = runTest() {
 
         val viewModel = mockSuccessfulCase()
-        val job = launch {
-            viewModel.playlists.getValueForTest()
-            verify(repository, times(1)).getPlayLists()
-        }
-
-        job.cancel()
+        viewModel.playlists.getValueForTest()
+        verify(repository, times(1)).getPlayLists()
 
     }
 
     @Test
-    fun `is emitting playlists from the repository`() = runBlocking {
+    fun `is emitting playlists from the repository`() = runTest {
 
         val viewModel = mockSuccessfulCase()
 
@@ -54,7 +51,7 @@ class PlayListViewModelShould : BaseUnitTest() {
     }
 
     @Test
-    fun `emit error callback when received an error`() = runBlocking {
+    fun `emit error callback when received an error`() = runTest {
         val viewModel = mockFailCase()
 
         viewModel.playlists.getValueForTest()
@@ -63,7 +60,7 @@ class PlayListViewModelShould : BaseUnitTest() {
     }
 
     @Test
-    fun `show spinner while loading`() = runBlocking {
+    fun `show spinner while loading`() = runTest {
         val viewModel = mockSuccessfulCase()
 
         viewModel.loader.captureValues {
@@ -74,7 +71,7 @@ class PlayListViewModelShould : BaseUnitTest() {
     }
 
     @Test
-    fun `close hide spinner after fetch playlists`() = runBlocking {
+    fun `close hide spinner after fetch playlists`() = runTest {
         val viewModel = mockSuccessfulCase()
 
         viewModel.loader.captureValues {
@@ -84,7 +81,7 @@ class PlayListViewModelShould : BaseUnitTest() {
     }
 
     @Test
-    fun `close hide spinner after some exception`() = runBlocking {
+    fun `close hide spinner after some exception`() = runTest {
         val viewModel = mockFailCase()
 
         viewModel.loader.captureValues {
@@ -94,7 +91,7 @@ class PlayListViewModelShould : BaseUnitTest() {
     }
 
     private fun mockFailCase(): PlayListViewModel {
-        runBlocking {
+        runTest {
             whenever(repository.getPlayLists()).thenReturn(
                 flow {
                     emit(Result.failure(exception = exception))
@@ -106,7 +103,7 @@ class PlayListViewModelShould : BaseUnitTest() {
     }
 
     private fun mockSuccessfulCase(): PlayListViewModel {
-        runBlocking {
+        runTest {
             whenever(repository.getPlayLists()).thenReturn(
                 flow {
                     emit(expected)
